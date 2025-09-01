@@ -1,29 +1,15 @@
-use rdev::{listen, Event, EventType};
-
-
-pub struct MenuItem{
-	title: String,
-	goto: fn()
+pub struct Asset{
+	name: String,
+	uid: String,
+	type: String
+	reachable: bool,
+	alive_icmp: bool,
+	location: String,
+	notes: String
 }
 
-impl MenuItem {
-	pub fn new(title: String, goto: fn()) -> Self {
-		Self {
-			title,
-			goto,
-		}
-	}
-}
-
-
-pub struct Menu{
-	title: String,
-	menu_items: Vec<MenuItem>,
-	current_option: u8
-}
-
-impl Menu {
-	pub fn new(title: String, menu_items: Vec<MenuItem>) -> Self {
+impl Asset {
+	pub fn new(name: String, menu_items: Vec<MenuItem>) -> Self {
 		Self {
 			title,
 			menu_items,
