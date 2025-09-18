@@ -1,11 +1,35 @@
-pub struct Asset{
+use std::io::ErrorKind
+
+
+pub struct IPv4 {
+	octet: [u8; 4],
+	range: u8, 
+}
+
+impl IPv4 {
+	pub fn new(ip: String) -> Option<Self> {
+		None
+		Self {
+			
+		}	
+}
+
+
+
+pub struct Asset {
 	name: String,
 	uid: String,
-	type: String
+	type: String,
+	ip: String, //horrible, TODO: change this to another data type more appropriate
 	reachable: bool,
 	alive_icmp: bool,
 	location: String,
-	notes: String
+	notes: String,
+	aliases: String,
+	mac_address: String, //also horrible, TODO: get a better data-type
+	status: String, //prob an enum
+	vendor: String,
+	short_code: String //this should also be a data-type - but if not green-field it would be horrible to force a short-code
 }
 
 impl Asset {
