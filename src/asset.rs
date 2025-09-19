@@ -1,5 +1,4 @@
-use std::io::ErrorKind
-
+use regex:Regex; //for string validation on struct creation
 
 pub struct IPv4 {
 	octet: [u8; 4],
@@ -7,10 +6,15 @@ pub struct IPv4 {
 }
 
 impl IPv4 {
-	pub fn new(ip: String) -> Option<Self> {
-		None
+	//expects a CIDR notation string, if not given it will default struct to 0.0.0.0/0
+	pub fn new(ip: String) -> IPv4 {
+		let regexCheck = Regex:new(r"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(0|[1-2][0-9]|3[0-2])$").unwrap();
+		if !regexCheck.is_match(ip) {
+			Self { octet = [0,0,0,0], range = 0 }
+		}
 		Self {
-			
+			octet = [1,1,1,1],
+			range = 1
 		}	
 }
 
