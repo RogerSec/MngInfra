@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 inquire = "*"
 regex = "*"
+sqlite = "*"
