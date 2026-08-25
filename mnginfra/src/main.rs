@@ -4,6 +4,11 @@ use date::Date;
 mod asset;
 use asset::Asset;
 
+//mod software;
+//use software::Software;
+
+mod credential;
+use credential::Credential;
 
 
 fn main() {
@@ -12,12 +17,16 @@ fn main() {
 	let mon = 8;
 	let day = 19;
 
+
+
 	println!("Creating new date: {}/{}/{}", year, mon, day);
 
-	let d = Date::new(year, mon, day).unwrap();
+	let d = Date::new_from_cli().unwrap();
 
 
-	println!("{}", d.get());
+
+
+	println!("{}", d.info());
 	println!("Hello!");
 	println!("Hello!");
 
@@ -31,11 +40,13 @@ fn main() {
 	println!("{}", a.info());
 
 
+    let c = Credential::new_from_cli().unwrap();
+	println!("{}", c.info());
+
+
+
 
 
 
 
 }
-
-
-

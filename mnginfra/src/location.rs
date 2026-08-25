@@ -11,7 +11,12 @@ pub struct Location {
 
 
 impl Location {
-	pub fn new() -> Result<Self, String> {
-		
+	fn new(code: String, exact: String) -> Result<Self, String> {
+        
+	}
+
+
+    pub fn info(&self) -> String {
+		format!("\r::::::: Location Info  :::::::\r", self.year, self.month, self.day)
 	}
 }
