@@ -3,12 +3,17 @@
 mod software;
 use software::Software;
 
+#[path = "configuration.rs"]
+mod configuration;
+use configuration::Configuration;
+
+
 pub struct Asset{
 	code: String,
 	name: String,
+	configurations: Vec<Configuration>,
 	aliases: Vec<String>,
-	installed_softwares: Vec<Software>, //not bool, this should be type "Software" but not yet
-                                        //implemented
+	installed_softwares: Vec<Software>,
 	deployed: bool,
 }
 
@@ -22,17 +27,19 @@ impl Asset {
 			name,
 			deployed,
 			aliases: Vec::<String>::new(),
-			installed_softwares: Vec::<Software>::new()
+			installed_softwares: Vec::<Software>::new(),
+			configurations : Vec::<Configuration>::new()
 		})
 	}
 
 	pub fn info(&self) -> String {
-		format!("Asset Info:::\n:+: Code: {}\n:+: Name:{}\n:+: Deplyoed: {}\n:+: # of Aliases: {}\n:+: # of Installed Softwares: {}\n:::::::::::", 
+		format!("Asset Info:::\n:+: Code: {}\n:+: Name:{}\n:+: Deplyoed: {}\n:+: # of Aliases: {}\n:+: # of Installed Softwares: {}\n:+: # of Attached Configurations: {}\n:::::::::::", 
 			self.code, 
 			self.name, 
 			self.deployed, 
 			self.aliases.len(), 
-			self.installed_softwares.len())
+			self.installed_softwares.len(),
+			self.configurations.len())
 	}
 
     pub fn add_software(&mut self, software: Software) -> bool{
