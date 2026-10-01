@@ -1,3 +1,5 @@
+use std::io::{self, Write}; //used in asking for input in *_cli implementations
+
 
 #[path = "software.rs"]
 mod software;
@@ -32,6 +34,21 @@ impl Asset {
 		})
 	}
 
+	pub fn new_cli() -> Result<Self, String> {
+		print!("\n:::-------------------------:::\n");
+		print!("   NEW ASSET   \n");
+		print!("(q to quit asset creation)\n");
+		print!("[Required] Asset Code: ");
+		print!("[Required] Asset Name: ");
+		print!("[Required] Asset is deployed? (Y/n): ");
+
+
+		print!("\n:::-------------------------:::\n");
+		return Err("Not built yet..");
+	}
+
+
+
 	pub fn info(&self) -> String {
 		format!("Asset Info:::\n:+: Code: {}\n:+: Name:{}\n:+: Deplyoed: {}\n:+: # of Aliases: {}\n:+: # of Installed Softwares: {}\n:+: # of Attached Configurations: {}\n:::::::::::", 
 			self.code, 
@@ -42,9 +59,13 @@ impl Asset {
 			self.configurations.len())
 	}
 
-    pub fn add_software(&mut self, software: Software) -> bool{
+    fn add_software(&mut self, software: Software) -> bool{
         let prev_size = self.installed_softwares.len();
         self.installed_softwares.push(software);
         if prev_size == self.installed_softwares.len()-1 {return true} return false
     }
+
+
+	// TODO pub fn add_software_cli
+
 }
