@@ -9,6 +9,10 @@ use software::Software;
 mod configuration;
 use configuration::Configuration;
 
+#[macro_use]
+#[path = "macros_cli_helpers.rs"]
+mod macros_cli_helpers;
+
 
 pub struct Asset{
 	code: String,
@@ -37,14 +41,34 @@ impl Asset {
 	pub fn new_cli() -> Result<Self, String> {
 		print!("\n:::-------------------------:::\n");
 		print!("   NEW ASSET   \n");
+		let mut code = String::new();
+		let mut name = String::new();
+		let mut deployed = String::new();
+
+		let asset_deployed: bool = true;
+
 		print!("(q to quit asset creation)\n");
-		print!("[Required] Asset Code: ");
-		print!("[Required] Asset Name: ");
-		print!("[Required] Asset is deployed? (Y/n): ");
+
+		print!("\n[Required] Asset Code: ");
+		read_line!(code);
+		return_if_q_or_blank!(code);
+
+		print!("\n[Required] Asset is deployed? (Y/n): ");
+		read_line!(deployed);
+		return_if_q!(deployed);
+
+
+		print!("\n[Optional] Asset Name: ");
+		read_line!(name);
+		return_if_q!(name);
+
+		let new_asset = Asset::new(code, Some(name), Some(asset_deployed));
+
+
 
 
 		print!("\n:::-------------------------:::\n");
-		return Err("Not built yet..");
+		return Err("Not built yet..".to_string());
 	}
 
 
