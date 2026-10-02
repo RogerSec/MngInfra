@@ -21,7 +21,10 @@ fn main() {
                      /|              |\\              
                     \\|              |/           
 ");
-	let a = Asset::new_cli().unwrap();
+
+
+
+	let a = Asset::new_from_cli().unwrap();
 	println!("{}", a.info());
 
 

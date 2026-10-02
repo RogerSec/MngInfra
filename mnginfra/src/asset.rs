@@ -38,7 +38,7 @@ impl Asset {
 		})
 	}
 
-	pub fn new_cli() -> Result<Self, String> {
+	pub fn new_from_cli() -> Result<Self, String> {
 		print!("\n:::-------------------------:::\n");
 		print!("   NEW ASSET   \n");
 		let mut code = String::new();
