@@ -39,8 +39,7 @@ impl Asset {
 	}
 
 	pub fn new_from_cli() -> Result<Self, String> {
-		print!("\n:::-------------------------:::\n");
-		print!("   NEW ASSET   \n");
+		display_title!("NEW ASSET");
 		let mut code = String::new();
 		let mut name = String::new();
 		let mut deployed = String::new();
