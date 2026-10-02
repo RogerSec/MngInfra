@@ -12,41 +12,20 @@ use credential::Credential;
 
 
 fn main() {
-	println!("Hello!");
-	let year = 2932;
-	let mon = 8;
-	let day = 19;
-
-
-
-	println!("Creating new date: {}/{}/{}", year, mon, day);
-
-	let d = Date::new_from_cli().unwrap();
-
-
-
-
-	println!("{}", d.info());
-	println!("Hello!");
-	println!("Hello!");
-
-	let asset_code = "SW_MNG_1".to_string();
-	let asset_name = "switch da sala".to_string();
-
-	println!("Creating new Asset");
-
-	let a = Asset::new(asset_code, Some(asset_name), Some(true)).unwrap();
-
+	println!("\n\n\n
+  ,__ __                   _          _              
+ /|  |  |                 | |        | |             
+  |  |  |   _  _    __,   | | _  _   | |  ,_    __,  
+  |  |  |  / |/ |  /  | _ |/ / |/ |  |/  /  |  /  |  
+  |  |  |_/  |  |_/\\_/|/\\_/\\/  |  |_/|__/   |_/\\_/|_/
+                     /|              |\\              
+                    \\|              |/           
+");
+	let a = Asset::new_cli().unwrap();
 	println!("{}", a.info());
 
 
     let c = Credential::new_from_cli().unwrap();
 	println!("{}", c.info());
-
-
-
-
-
-
 
 }
