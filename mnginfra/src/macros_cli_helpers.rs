@@ -1,3 +1,16 @@
+
+#[macro_export]
+macro_rules! clear_term {
+	() => {{
+	
+    	print!("\x1B[2J\x1B[1;1H");
+    	io::stdout().flush().unwrap();
+	}};
+}
+
+
+
+
 #[macro_export]
 macro_rules! return_if_q {
 	($in:expr) => {{
@@ -38,5 +51,20 @@ macro_rules! read_line_Yn {
 	}};
 }
 
+
+#[macro_export]
+macro_rules! display_title {
+	($in:expr) => {{
+		io::stdout().flush().unwrap();
+		let spacers = $in.chars().count() + 16 + 4;
+		print!("\n{}\n", "#".repeat(spacers));
+		print!("##{}{}{}##\n",
+			" ".repeat(8),
+			$in,
+			" ".repeat(8));
+		print!("{}\n", "#".repeat(spacers));
+		io::stdout().flush().unwrap();
+	}};
+}
 
 
